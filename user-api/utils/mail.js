@@ -1,24 +1,27 @@
 const nodemailer = require("nodemailer");
-exports.sendMail = async (to="bar@example.com", name="User Name", forRole="user") => {
-
+exports.sendMail = async (
+  to = "bar@example.com",
+  name = "User Name",
+  forRole = "user"
+) => {
   // create reusable transporter object using the default SMTP transport
   let transporter = nodemailer.createTransport({
     host: "smtpout.secureserver.net",
     port: 587,
     secure: false, // true for 465, false for other ports
     auth: {
-      user: 'admin@deekshithsn.co.in', // generated ethereal user
-      pass: 'Callbooking123', // generated ethereal password
+      user: "vidukulathungafb@gmail.com", // generated ethereal user
+      pass: "Callbooking123", // generated ethereal password
     },
   });
 
   // send mail with defined transport object
   let info = await transporter.sendMail({
-    from: '"Admin" <admin@deekshithsn.co.in>', // sender address
+    from: '"Admin" <vidukulathungafb@gmail.com>', // sender address
     to, // list of receivers
     subject: "Booking Confirmation ✔", // Subject line
     text: "Your booking is confirmed. Somebody from the team contact you soon.", // plain text body
-    html: forRole === 'user' ? getUserTemplate(name) : getAdminTemplate()
+    html: forRole === "user" ? getUserTemplate(name) : getAdminTemplate(),
   });
 
   console.log("Message sent: %s", info.messageId);
@@ -27,10 +30,9 @@ exports.sendMail = async (to="bar@example.com", name="User Name", forRole="user"
   // Preview only available when sending through an Ethereal account
   console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
   // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
-}
+};
 
-
-const getUserTemplate = (name = 'User') => `<!DOCTYPE html>
+const getUserTemplate = (name = "User") => `<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -62,7 +64,7 @@ const getUserTemplate = (name = 'User') => `<!DOCTYPE html>
         </div>
     </div>
 </body>
-</html>`
+</html>`;
 
 const getAdminTemplate = () => `<!DOCTYPE html>
 <html lang="en">
@@ -96,4 +98,4 @@ const getAdminTemplate = () => `<!DOCTYPE html>
         </div>
     </div>
 </body>
-</html>`
+</html>`;

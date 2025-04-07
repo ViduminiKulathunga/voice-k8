@@ -1,5 +1,5 @@
 FROM node:17.9.0-slim
-LABEL maintainer="DeekshithSN"
+LABEL maintainer="Vidumini"
 RUN useradd adminapi
 WORKDIR /app
 RUN chown adminapi /app /home

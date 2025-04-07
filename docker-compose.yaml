@@ -16,7 +16,7 @@ services:
       - 1004:1004
     environment:
       - MONGO_URL=mongodb://mongoadmin:secret@machine-ip:27017/?retryWrites=true&w=majority
-      - ADMIN_EMAIL=admin@deekshithsn.co.in
+      - ADMIN_EMAIL=vidukulathungafb@gmail.com
     depends_on:
       - mongo-db
 
